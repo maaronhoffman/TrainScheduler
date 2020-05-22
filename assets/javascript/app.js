@@ -25,31 +25,31 @@ $( document ).ready(function() {
     //On Click Event on Submit to do math and store data
     $('#submitButton').on('click', function() {
     
-    event.preventDefault();
-    $trainName = $('#trainName').val().trim();
-    $trainDest = $('#trainDest').val().trim();
-    $firstTime = $('#firstTime').val().trim();
-    $trainFreq = $('#trainFreq').val().trim();
+        event.preventDefault();
+        $trainName = $('#trainName').val().trim();
+        $trainDest = $('#trainDest').val().trim();
+        $firstTime = $('#firstTime').val().trim();
+        $trainFreq = $('#trainFreq').val().trim();
 
 
-    var convertTime = moment($firstTime, "HH:mm").subtract(1, "years");  	 
-    var tDif = moment().diff(moment(convertTime), 'minutes'); 	
-    var remainder = tDif % $trainFreq; 	 
-    $minAway = $trainFreq - remainder; 	
-    $nextArrival = moment().add($minAway, "m").format("hh:mm A"); 
-            
-    //Pushing Data to FireBase     
-    database.ref().push({
+        var convertTime = moment($firstTime, "HH:mm").subtract(1, "years");  	 
+        var tDif = moment().diff(moment(convertTime), 'minutes'); 	
+        var remainder = tDif % $trainFreq; 	 
+        $minAway = $trainFreq - remainder; 	
+        $nextArrival = moment().add($minAway, "m").format("hh:mm A"); 
+                
+        //Pushing Data to FireBase     
+        database.ref().push({
 
-    name: $trainName,
-    destination: $trainDest,
-    firstTime: $firstTime,
-    freq: $trainFreq,
-    mins: $minAway,
-    arrival: $nextArrival,      
+        name: $trainName,
+        destination: $trainDest,
+        firstTime: $firstTime,
+        freq: $trainFreq,
+        mins: $minAway,
+        arrival: $nextArrival,      
 
-    });
-    $('#trainform').trigger("reset");
+        });
+        $('#trainform').trigger("reset");
     });
 
     //After Data is added push to that table from the FireBase
