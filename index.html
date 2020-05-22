@@ -7,147 +7,153 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet"  href="assets/css/style.css">
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-database.js"></script>
 
-<link rel="stylesheet" href="https://use.typekit.net/opo8zvt.css">
+    <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-database.js"></script>
 
-
-
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-
-
+    <link rel="stylesheet" href="https://use.typekit.net/opo8zvt.css">
 </head>
+<!------------------------------------------------------------------------->
 <body>
     <div class="container">
 
-    
         <div class="justify-content-center row">
-
             <div class='text-center p-4 m-2' id="titleCard">
                 <h1>TRAIN SCHEDULER 9000</h1>
             </div>
-
         </div>
     
-
-
         <div class="row">
-    
             <table class="table table-striped">
                 <thead class="thead-dark">
                   <tr>
-                    <th scope="col">#</th>
                     <th scope="col">Train Name</th>
                     <th scope="col">Next Arrival</th>
-                    <th scope="col">Time Until Arrival</th>
+                    <th scope="col">Minutes Away</th>
+                    <th scope="col">Frequency (mins)</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody id="train-form">
                   <tr>
-                    <th scope="row">1</th>
-                    <td>Thomas</td>
-                    <td>20min</td>
-                    <td>6:20</td>
+                    <td>Thomas Zeh Tank</td>
+                    <td>06:20</td>
+                    <td>15</td>
+                    <td>25</td>
                   </tr>
-              
                 </tbody>
-              </table>
-              
-              
+              </table>       
         </div>
 
-
-
-    
         <div class="row">
             <div class="col-4">                        
               <h2>Train Info</h2>
             </div>
         </div>
-        <div  class="justify-content-center row">
-            <div  class="col-4">
 
-                <form id="train-form" class="form" action="#" method="POST" role="form">
+        <div class="justify-content-center row">
+            <div  class="col-4">
+                <form id="trainform" class="form" action="#" method="POST" role="form">
                     <div class="form-group">
                         <label class="form-label" for="name">Train Name</label>
                         <input  type="text" class="form-control" id="trainName" name="name" placeholder="The train's name" tabindex="1" required>
                     </div>                            
                     <div class="form-group">
-                        <label class="form-label" for="email">Destination</label>
-                        <input type="email" class="form-control" id="trainDest" name="email" placeholder="Your Destination" tabindex="2" required>
+                        <label class="form-label" for="dest">Destination</label>
+                        <input type="dest" class="form-control" id="trainDest" name="dest" placeholder="Your Destination" tabindex="2" required>
                     </div>                            
                     <div class="form-group">
-                        <label class="form-label" for="subject">First Train Time</label>
-                        <input type="text" class="form-control" id="firstTime" name="subject" placeholder="First time leaving station" tabindex="3">
+                        <label class="form-label" for="firstt">First Train Time</label>
+                        <input type="text" class="form-control" id="firstTime" name="firstt" placeholder="HH:MM" tabindex="3">
                     </div>                            
                     <div class="form-group">
-                        <label class="form-label" for="subject">Frequency</label>
-                        <input type="text" class="form-control" id="trainFreq" name="subject" placeholder="Frequency of arrival" tabindex="3">
+                        <label class="form-label" for="fre">Frequency</label>
+                        <input type="text" class="form-control" id="trainFreq" name="fre" placeholder="(mins)" tabindex="3">
                     </div>  
                     <div class="text-center">
                         <button type="submit" id="submitButton" class="submitButton btn btn-start-order">Enter</button>
                     </div>
                 </form>
-              
             </div>
-            <div id="imageTrain" class="overflow-hidden justify-content-center p-5 col-8"> <img style="overflow: hidden; width:800px; height:400px;" src="assets/images/train.jpg" alt=""> </div>
-            
+
+            <!-- Train Image -->
+            <div id="imageTrain" class="overflow-hidden justify-content-center p-5 col-8"> 
+                <img style="width:800px; height:400px;" src="assets/images/train.jpg" alt=""> 
+            </div>
+
         </div>
+
       </div>
 
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.26.0/moment.min.js"></script>
+<script src="assets/javascript/app.js"></script>
+
 <script>
-    // Your web app's Firebase configuration
-    var firebaseConfig = {
-        apiKey: "AIzaSyChMAej19CkM4wroA_Vf5eifATV1Caoxns",
-    authDomain: "train-scheduler-1c33e.firebaseapp.com",
-    databaseURL: "https://train-scheduler-1c33e.firebaseio.com",
-    projectId: "train-scheduler-1c33e",
-    storageBucket: "train-scheduler-1c33e.appspot.com",
-    messagingSenderId: "365131649671",
-    appId: "1:365131649671:web:1f3e8474833f327ca19e22",
-    measurementId: "G-7K0CLZ2PB9"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
+
+    // //On Page Load Taken Care of In Body
+
+
+    // // Your web app's Firebase configuration
+    // var firebaseConfig = {
+    // apiKey: "AIzaSyChMAej19CkM4wroA_Vf5eifATV1Caoxns",
+    // authDomain: "train-scheduler-1c33e.firebaseapp.com",
+    // databaseURL: "https://train-scheduler-1c33e.firebaseio.com",
+    // projectId: "train-scheduler-1c33e",
+    // storageBucket: "train-scheduler-1c33e.appspot.com",
+    // messagingSenderId: "365131649671",
+    // appId: "1:365131649671:web:1f3e8474833f327ca19e22",
+    // measurementId: "G-7K0CLZ2PB9"
+    // };
+    // // Initialize Firebase
+    // firebase.initializeApp(firebaseConfig);
    
+    // var database = firebase.database();
 
-    var database = firebase.database();
-
-    var $trainName = "";
-
-    
-    
-    
-    
-    $('#submitButton').on('click', function() {
-        
-        event.preventDefault();
-        console.log('hi');
-        $trainName = $('#trainName').val().trim();
-        
-        
-      
-
-      // Code for the push
-      database.ref().push({
-
-        name: $trainName,
+    // var $trainName = "";
+    // var $trainDest = "";
+    // var $firstTime = "";
+    // var $trainFreq = "";
+    // var $nextArrival = "";
+    // var $minAway = "";
    
+    // //On Click Event on Submit to do math and store data
+    // $('#submitButton').on('click', function() {
+        
+    //     event.preventDefault();
+        
+    //     $trainName = $('#trainName').val().trim();
+    //     $trainDest = $('#trainDest').val().trim();
+    //     $firstTime = $('#firstTime').val().trim();
+    //     $trainFreq = $('#trainFreq').val().trim();
+        
+        
+    //     var convertTime = moment($firstTime, "HH:mm").subtract(1, "years");  	 
+	//   	var tDif = moment().diff(moment(convertTime), 'minutes'); 	
+	//   	var remainder = tDif % $trainFreq; 	 
+	//   	$minAway = $trainFreq - remainder; 	
+	//   	$nextArrival = moment().add($minAway, "m").format("hh:mm A"); 
+	  		
+    //     //Pushing Data to FireBase     
+    //     database.ref().push({
 
-               
+    //     name: $trainName,
+    //     destination: $trainDest,
+    //     firstTime: $firstTime,
+    //     freq: $trainFreq,
+    //     mins: $minAway,
+    //     arrival: $nextArrival,      
 
-           });
-   });
+    //     });
+    // });
 
+    // //After Data is added push to that table from the FireBase
+    // database.ref().on("child_added", function(childSnapshot) {
 
-
-
+    //     $("#train-form").append("<tr><td>" + childSnapshot.val().name +  "</td><td>" + childSnapshot.val().arrival +  "</td><td>" + childSnapshot.val().mins +  "</td><td>" + $('#trainFreq').val().trim() +  "</td></tr>")
+        
+    // });
     
         
 
