@@ -48,9 +48,11 @@
 
 #titleCard {
 
-background-color: #343a40;
+background: rgb(0,212,255);
+background: linear-gradient(193deg, rgba(0,212,255,1) 0%, rgba(113,131,187,1) 100%);
 border-radius: 7px;;
 width: 100%;
+
 }
 
 #titleCard h1 {
@@ -59,6 +61,9 @@ color: white;
 font-family: metallophile-sp8, sans-serif;
 font-weight: 500;
 font-style: normal;
+font-size: 72px;
+
+ 
 
 }
 
