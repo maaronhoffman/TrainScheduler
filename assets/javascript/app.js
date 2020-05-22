@@ -56,8 +56,8 @@ $( document ).ready(function() {
     database.ref().on("child_added", function(childSnapshot) {
 
         
-        $firstTime = childSnapshot.val().firstTime
-        $trainFreq = childSnapshot.val().freq
+        $firstTime = childSnapshot.val().firstTime;
+        $trainFreq = childSnapshot.val().freq;
     
     
         var convertTime = moment($firstTime, "HH:mm").subtract(1, "years");  	 
