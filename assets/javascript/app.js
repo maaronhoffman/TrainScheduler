@@ -55,10 +55,8 @@ $( document ).ready(function() {
     //After Data is added push to that table from the FireBase
     database.ref().on("child_added", function(childSnapshot) {
 
-        
         $firstTime = childSnapshot.val().firstTime;
         $trainFreq = childSnapshot.val().freq;
-    
     
         var convertTime = moment($firstTime, "HH:mm").subtract(1, "years");  	 
         var tDif = moment().diff(moment(convertTime), 'minutes'); 	
