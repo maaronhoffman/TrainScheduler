@@ -50,13 +50,16 @@ $( document ).ready(function() {
     arrival: $nextArrival,      
 
     });
+
+    $('#trainFreq').empty;
+
     });
 
     //After Data is added push to that table from the FireBase
     database.ref().on("child_added", function(childSnapshot) {
 
-    $("#train-form").append("<tr><td>" + childSnapshot.val().name +  "</td><td>" + childSnapshot.val().arrival +  "</td><td>" + childSnapshot.val().mins +  "</td><td>" + $('#trainFreq').val().trim() +  "</td></tr>")
-
+    $("#train-form").append("<tr><td class='text-center'>" + childSnapshot.val().name +  "</td><td class='text-center'>" + childSnapshot.val().arrival +  "</td><td class='text-center'>" + childSnapshot.val().mins +  "</td></tr>")
+    
     });
 
 });

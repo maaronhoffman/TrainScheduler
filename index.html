@@ -27,10 +27,9 @@
             <table class="table table-striped">
                 <thead class="thead-light">
                   <tr>
-                    <th scope="col">Train Name</th>
-                    <th scope="col">Next Arrival</th>
-                    <th scope="col">Minutes Away</th>
-                    <th scope="col">Frequency (mins)</th>
+                    <th class="text-center" scope="col">Train Name</th>
+                    <th class="text-center" scope="col">Next Arrival</th>
+                    <th class="text-center" scope="col">Minutes Away</th>
                   </tr>
                 </thead>
                 <tbody id="train-form">
@@ -39,30 +38,30 @@
               </table>       
         </div>
 
-        <div class="row">
-            <div class="col-4">                        
+        <div class="justify-content-center row">
+            <div class="text-center col-4">                        
               <h2>Train Info</h2>
             </div>
         </div>
 
-        <div class="justify-content-center row">
-            <div  class="col-4">
+        <div class=" justify-content-center row">
+            <div id="divForm" class="col-lg-4">
                 <form id="trainform" class="form" action="#" method="POST" role="form">
                     <div class="form-group">
                         <label class="form-label" for="name">Train Name</label>
-                        <input  type="text" class="form-control" id="trainName" name="name" placeholder="The train's name" tabindex="1" required>
+                        <input  type="text" class="text-center form-control" id="trainName" name="name" placeholder="Name Here" tabindex="1" required>
                     </div>                            
                     <div class="form-group">
                         <label class="form-label" for="dest">Destination</label>
-                        <input type="dest" class="form-control" id="trainDest" name="dest" placeholder="Your Destination" tabindex="2" required>
+                        <input type="dest" class="text-center form-control" id="trainDest" name="dest" placeholder="Destination" tabindex="2" required>
                     </div>                            
                     <div class="form-group">
                         <label class="form-label" for="firstt">First Train Time</label>
-                        <input type="text" class="form-control" id="firstTime" name="firstt" placeholder="HH:MM" tabindex="3">
+                        <input type="text" class="text-center form-control" id="firstTime" name="firstt" placeholder="HH:MM" tabindex="3">
                     </div>                            
                     <div class="form-group">
                         <label class="form-label" for="fre">Frequency</label>
-                        <input type="text" class="form-control" id="trainFreq" name="fre" placeholder="(mins)" tabindex="3">
+                        <input type="text" class="text-center form-control" id="trainFreq" name="fre" placeholder="(mins)" tabindex="3">
                     </div>  
                     <div class="text-center">
                         <button type="submit" id="submitButton" class="submitButton btn btn-start-order">Enter</button>
@@ -71,8 +70,8 @@
             </div>
 
             <!-- Train Image -->
-            <div id="imageTrain" class="overflow-hidden justify-content-center p-5 col-8"> 
-                <img style="width:800px; height:400px;" src="assets/images/train.jpg" alt=""> 
+            <div id="imageDiv" class="justify-content-center p-5 col-8"> 
+                <img id="imageTrain" style="width:800px; height:400px;" src="assets/images/train.jpg" alt=""> 
             </div>
 
         </div>
