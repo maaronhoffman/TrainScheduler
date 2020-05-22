@@ -24,9 +24,8 @@ $( document ).ready(function() {
 
     //On Click Event on Submit to do math and store data
     $('#submitButton').on('click', function() {
-
+    
     event.preventDefault();
-
     $trainName = $('#trainName').val().trim();
     $trainDest = $('#trainDest').val().trim();
     $firstTime = $('#firstTime').val().trim();
@@ -50,14 +49,13 @@ $( document ).ready(function() {
     arrival: $nextArrival,      
 
     });
-
-    $('#trainFreq').empty;
-
+    $('#trainform').trigger("reset");
     });
 
     //After Data is added push to that table from the FireBase
     database.ref().on("child_added", function(childSnapshot) {
 
+    
     $("#train-form").append("<tr><td class='text-center'>" + childSnapshot.val().name +  "</td><td class='text-center'>" + childSnapshot.val().arrival +  "</td><td class='text-center'>" + childSnapshot.val().mins +  "</td></tr>")
     
     });
